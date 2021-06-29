@@ -33,7 +33,7 @@
     }
   },
   "scripts": {
-    "postinstall": "ln -s \"$(pwd)/index.js\" \"$(pwd)/node_modules/.bin/toolbox\" && ln -s \"$(pwd)\" \"$(pwd)/node_modules/toolbox-utils\"",
+    "postinstall": "set -e -x; rm -f node_modules/.bin/toolbox; ln -s ../../index.js node_modules/.bin/toolbox",
     "postuninstall": "npm run postinstall"
   },
   "dependencies": {
