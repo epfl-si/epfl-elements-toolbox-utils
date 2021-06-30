@@ -11,17 +11,17 @@ const latestVersion = require('latest-version');
 const pkg = require('./package.json');
 
 // Display update notification if it's not the last version
-latestVersion('toolbox-utils')
+latestVersion('epfl-elements-toolbox-utils')
   .then(version => {
     if (version !== pkg.version) {
-      const msg = ` Version ${version} (current ${pkg.version}) of toolbox-utils is available ! `;
+      const msg = ` Version ${version} (current ${pkg.version}) of epfl-elements-toolbox-utils is available ! `;
       console.log(`
   ${chalk.white.bgRed.bold(` ${' '.repeat(msg.length)} \n ${msg} \n${' '.repeat(msg.length)}  `)}
 
   To update your beloved builder, do :
-  $ ${chalk.green('yarn upgrade toolbox-utils')} (recommended)
+  $ ${chalk.green('yarn upgrade epfl-elements-toolbox-utils')} (recommended)
   or
-  $ ${chalk.green('npm update toolbox-utils')}
+  $ ${chalk.green('npm update epfl-elements-toolbox-utils')}
       `);
     }
   })
@@ -38,12 +38,12 @@ if (binaries.includes(script)) {
   spawn(
     'sh',
     [`./bin/${script}.sh`, '--project', process.cwd(), env, args],
-    { stdio: 'inherit', cwd: './node_modules/toolbox-utils' },
+    { stdio: 'inherit', cwd: './node_modules/epfl-elements-toolbox-utils' },
   );
 } else {
   spawn(
-    './node_modules/.bin/gulp',
+    'gulp',
     [script, '--project', process.cwd(), env, args],
-    { stdio: 'inherit', cwd: './node_modules/toolbox-utils' },
+    { stdio: 'inherit', cwd: './node_modules/epfl-elements-toolbox-utils' },
   );
 }
